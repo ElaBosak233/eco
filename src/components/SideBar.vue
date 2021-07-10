@@ -1,8 +1,8 @@
 <template>
-  <div class="h-screen rounded-2xl hidden lg:block my-4 ml-4 shadow-lg relative w-80">
+  <div class="h-screen rounded-2xl hidden lg:block my-4 ml-4 shadow relative w-80">
     <div class="bg-white h-full rounded-2xl dark:bg-gray-700">
-      <div class="flex items-center justify-center pt-6">
-        <!-- Todo Logo -->
+      <div class="container flex items-center justify-center pt-4 pb-4 bg-green-500 rounded-t-2xl">
+        <img src="../assets/favicon.svg" alt="" class="max-h-10"/>
       </div>
       <nav class="mt-6">
         <div>
@@ -10,7 +10,6 @@
             :class="{'w-full font-thin uppercase text-gray-500 dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start hover:text-blue-500': $route.path !== item.router, 'w-full font-thin uppercase text-blue-500 flex items-center p-4 my-2 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-blue-100 border-r-4 border-blue-500 dark:from-gray-700 dark:to-gray-800 border-r-4 border-blue-500': $route.path === item.router}"
             href="#"
             v-for="item in items"
-            :ref="item.label"
           >
             <span class="text-left" v-html="item.icon" />
             <span class="mx-4 text-sm font-normal" v-html="item.label" />
@@ -48,12 +47,12 @@ export default {
     return {
       items: [
         {
-          label: "Dashboard",
+          label: "控制台",
           icon: "<span class=\"iconify\" data-icon=\"ant-design:dashboard-twotone\" data-inline=\"false\"></span>",
           router: "/"
         },
         {
-          label: "Server",
+          label: "服务器",
           icon: "<span class=\"iconify\" data-icon=\"mdi:server-network\" data-inline=\"false\"></span>",
           router: "/server"
         }

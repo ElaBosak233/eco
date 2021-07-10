@@ -12,12 +12,12 @@ const store: Module<StoreUser, unknown> = {
         }
     },
     mutations: {
-        setText(state: StoreUser, payload: AnyObject) {
+        setText(state: StoreUser, payload: any) {
             state.text = payload.text;
         }
     },
     actions: {
-        setText(context, payload: AnyObject) {
+        setText(context, payload: any) {
             context.commit("setText", payload);
         }
     },

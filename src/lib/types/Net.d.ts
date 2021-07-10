@@ -1,4 +1,4 @@
-interface NetParams extends AnyObject {
+interface NetParams {
     /** 请求成功回调函数 */
     _success?: Function,
     /** 请求失败回调函数 */

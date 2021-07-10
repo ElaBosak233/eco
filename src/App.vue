@@ -21,7 +21,11 @@ export default defineComponent({
       return (this.$route.meta.layout || "default") + '-layout'
     }
   },
-
+  watch: {
+    $route(to, from) {
+      document.title = to.meta.title || 'eco'
+    }
+  }
 })
 </script>
 

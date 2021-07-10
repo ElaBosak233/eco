@@ -1,7 +1,7 @@
 export function loadModules() {
-    const context = import.meta.globEager("./*.ts") as AnyObject;
+    const context = import.meta.globEager("./*.ts") as any;
 
-    const modules: AnyObject = {};
+    const modules: any = {};
 
     Object.keys(context).forEach((key: string) => {
         if (key === "./index.ts") return;

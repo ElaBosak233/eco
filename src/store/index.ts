@@ -1,4 +1,4 @@
-import Base from "@/lib/ts/Base";
+import Base from "../lib/ts/Base";
 import { InjectionKey } from "vue"
 import { loadModules, context, modules } from "./modules"
 import { createStore, useStore as baseUseStore, Store, createLogger } from "vuex"

@@ -53,7 +53,7 @@ export default class NetBase {
             method: "GET",
             mode: config?.mode || "cors"
         }
-        let _params: AnyObject = NetBase.getParams(params);
+        let _params: any = NetBase.getParams(params);
         url = NetBase.params2GetUrl(url, _params);
         // 拦截器，但是为什么要拦截？
         // config = config as NetBaseConfig;
@@ -67,16 +67,18 @@ export default class NetBase {
     // }
 
     /** 获取请求数据（私有） */
-    private static getParams(obj: NetParams): AnyObject {
-		var param: AnyObject = {};
+    private static getParams(obj: NetParams): any {
+		var param: any = {};
 		for (var key in obj) {
-			if (!['_success', '_fail', '_complete'].includes(key)) param[key] = obj[key];
+			if (!['_success', '_fail', '_complete'].includes(key)) { // @ts-ignore
+                param[key] = obj[key];
+            }
 		}
 		return param;
     }
 
-    private static params2Params(obj: AnyObject | string): string {
-        if (typeof obj == "string") obj = JSON.parse(obj) as AnyObject;
+    private static params2Params(obj: any | string): string {
+        if (typeof obj == "string") obj = JSON.parse(obj) as any;
         let params: string[] = []
         for (let key in obj) {
             // 如果为数组或对象就格式化为 json字符串
@@ -88,7 +90,7 @@ export default class NetBase {
         return params.join("&");
     }
 
-    private static params2GetUrl(url: string, obj: AnyObject | string): string {
+    private static params2GetUrl(url: string, obj: any | string): string {
         let sparam = this.params2Params(obj);
         let and: string = "?";
         if (url.includes("?")) and = "&";
