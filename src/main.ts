@@ -6,8 +6,7 @@ import router from "./router";
 import store from "./store";
 
 const app = createApp(App);
-app.use(router);
-app.use(store);
+app.use(router).use(store);
 import DefaultLayout from "./layout/default.vue";
 app.component("default-layout", DefaultLayout);
 import LoginLayout from "./layout/login.vue";

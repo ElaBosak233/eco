@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import store from "./store";
 
 export default defineComponent({
   name: "App",
@@ -25,6 +26,9 @@ export default defineComponent({
     $route(to, from) {
       document.title = to.meta.title || 'eco'
     }
+  },
+  created: () => {
+    console.log(store.state.sidebar);
   }
 })
 </script>
@@ -35,5 +39,9 @@ export default defineComponent({
 }
 ::-webkit-scrollbar {
   width: 0 !important;height: 0;
+}
+@font-face {
+  font-family: PingFangSC;
+  src: url('./src/assets/PingFang-SC.otf');
 }
 </style>

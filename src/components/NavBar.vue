@@ -1,43 +1,15 @@
 <template>
-  <header class="w-full shadow bg-white dark:bg-gray-700 items-center h-16 rounded-2xl z-40">
+  <header class="w-full shadow bg-gradient-to-r from-green-400 to-blue-500 dark:bg-gray-700 items-center h-16 rounded-xl z-40">
     <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
       <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
-        <div class="container relative left-0 z-50 flex w-3/4 h-auto h-full">
-          <div class="relative flex items-center w-full lg:w-64 h-full group">
-            <div class="absolute z-50 flex items-center justify-center block w-auto h-10 p-3 pr-2 text-sm text-gray-500 uppercase cursor-pointer sm:hidden">
-              <svg
-                  fill="none"
-                  class="relative w-5 h-5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-              >
-                <path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <svg
-                class="absolute left-0 z-20 hidden w-4 h-4 ml-4 text-gray-500 pointer-events-none fill-current group-hover:text-gray-400 sm:block"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-            >
-              <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-            </svg>
-            <input
-                type="text"
-                class="block w-full py-1.5 pl-10 pr-4 leading-normal rounded-2xl focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 ring-opacity-90 bg-gray-100 dark:bg-gray-800 text-gray-400 aa-input"
-                placeholder="Search"
-            >
-            <div class="absolute right-0 hidden h-auto px-2 py-1 mr-2 text-xs text-gray-400 border border-gray-300 rounded-2xl md:block">
-              +
-            </div>
-          </div>
+        <div class="relative mb-1 left-0 z-50 flex w-3/4 h-auto h-full">
+          <button type="button" class="flex justify-center items-center mt-2 w-8 h-8 bg-green-100 hover:bg-green-100 focus:ring-green-300 focus:ring-offset-green-300 text-green-500 transition ease-in duration-200 text-center text-base font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" @click="store.state.sidebar=!store.state.sidebar">
+            <span class="iconify" data-icon="eva:menu-outline" data-inline="false"></span>
+          </button>
         </div>
-        <div class="relative p-1 flex items-center justify-end w-1/4 ml-5 mr-4 sm:mr-0 sm:right-auto">
+        <div class="relative flex items-center justify-end w-1/4 mr-4">
           <a
-              href="#"
-              class="block relative"
+              @click="dropdown=!dropdown"
           >
             <img
                 alt="profil"
@@ -45,6 +17,18 @@
                 class="mx-auto object-cover rounded-full h-10 w-10 "
             >
           </a>
+          <div v-show="dropdown" @click="dropdown = false" class="fixed inset-0 h-full w-full z-10"></div>
+          <div v-show="dropdown" class="absolute top-2 w-32 py-2 mt-10 bg-white rounded-md shadow-xl dark:bg-gray-800">
+            <div class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform hover:bg-blue-500 hover:text-white">
+              个人资料
+            </div>
+            <div class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform hover:bg-blue-500 hover:text-white">
+              设置
+            </div>
+            <div class="block px-4 py-2 text-sm text-white bg-red-700 capitalize transition-colors duration-200 transform hover:bg-red-500 hover:text-white">
+              注销
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -52,8 +36,16 @@
 </template>
 
 <script>
+import store from "../store";
+
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  data() {
+    return {
+      store: store,
+      dropdown: false
+    }
+  }
 }
 </script>
 
