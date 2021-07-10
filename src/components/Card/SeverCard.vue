@@ -1,7 +1,7 @@
 <template>
   <div class="mb-4">
     <div class="shadow rounded-2xl p-4 bg-white dark:bg-gray-700 w-full">
-      <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center justify-between mb-6 container">
         <div class="flex items-center">
           <span class="rounded-xl relative p-2 bg-blue-100" v-html="icon">
           </span>

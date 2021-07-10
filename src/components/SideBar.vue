@@ -1,14 +1,14 @@
 <template>
-  <div class="h-screen rounded-2xl hidden lg:block my-4 ml-4 shadow relative w-80">
+  <div class="h-screen rounded-2xl hidden lg:block my-4 ml-4 shadow relative w-60">
     <div class="bg-white h-full rounded-2xl dark:bg-gray-700">
-      <div class="container flex items-center justify-center pt-4 pb-4 bg-green-500 rounded-t-2xl">
+      <div class="container flex items-center justify-center pt-4 pb-4 bg-green-500 rounded-t-2xl" @click="$router.push('/')">
         <img src="../assets/favicon.svg" alt="" class="max-h-10"/>
       </div>
       <nav class="mt-6">
         <div>
           <a
-            :class="{'w-full font-thin uppercase text-gray-500 dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start hover:text-blue-500': $route.path !== item.router, 'w-full font-thin uppercase text-blue-500 flex items-center p-4 my-2 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-blue-100 border-r-4 border-blue-500 dark:from-gray-700 dark:to-gray-800 border-r-4 border-blue-500': $route.path === item.router}"
-            href="#"
+            :class="{'w-full font-thin uppercase text-gray-500 dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start hover:text-green-500': $route.path !== item.router, 'w-full font-thin uppercase text-green-500 flex items-center p-4 my-2 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-green-100 border-r-4 border-green-500 dark:from-gray-700 dark:to-gray-800 border-r-4 border-green-500': $route.path === item.router}"
+            @click="$router.push(item.router)"
             v-for="item in items"
           >
             <span class="text-left" v-html="item.icon" />
@@ -49,7 +49,7 @@ export default {
         {
           label: "控制台",
           icon: "<span class=\"iconify\" data-icon=\"ant-design:dashboard-twotone\" data-inline=\"false\"></span>",
-          router: "/"
+          router: "/dashboard"
         },
         {
           label: "服务器",

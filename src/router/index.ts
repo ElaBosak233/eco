@@ -4,7 +4,18 @@ const routes = [
     {
         path: '/',
         name: 'Index',
-        component: () => import('@/views/Index.vue')
+        component: () => import('@/views/Index.vue'),
+        meta: {
+            title: '门户'
+        }
+    },
+    {
+        path: '/dashboard',
+        name: 'DashBoard',
+        component: () => import('@/views/DashBoard.vue'),
+        meta: {
+            title: '控制台'
+        }
     },
     {
         path: '/login',
