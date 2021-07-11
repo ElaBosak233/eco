@@ -6,8 +6,5 @@ module.exports = {
       'sidebar': ['PingFangSC', 'Helvetica', 'Arial', 'sans-serif']
     }
   },
-  variants: {
-    extend: {},
-  },
   plugins: [],
 };

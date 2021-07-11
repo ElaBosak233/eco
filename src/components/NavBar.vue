@@ -7,28 +7,29 @@
             <span class="iconify" data-icon="eva:menu-outline" data-inline="false"></span>
           </button>
         </div>
-        <div class="relative flex items-center justify-end w-1/4 mr-4">
+        <div class="absolute right-1">
           <a
               @click="dropdown=!dropdown"
           >
             <img
-                alt="profil"
+                alt=""
                 src="https://cdn.jsdelivr.net/gh/ElaBosak233/PicRepo/Profile/avatar.png"
-                class="mx-auto object-cover rounded-full h-10 w-10 "
+                class="rounded-full h-10 w-10"
             >
           </a>
           <div v-show="dropdown" @click="dropdown = false" class="fixed inset-0 h-full w-full z-10"></div>
-          <div v-show="dropdown" class="absolute top-2 w-32 py-2 mt-10 bg-white rounded-md shadow-xl dark:bg-gray-800">
-            <div class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform hover:bg-blue-500 hover:text-white">
-              个人资料
-            </div>
-            <div class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform hover:bg-blue-500 hover:text-white">
-              设置
-            </div>
-            <div class="block px-4 py-2 text-sm text-white bg-red-700 capitalize transition-colors duration-200 transform hover:bg-red-500 hover:text-white">
-              注销
-            </div>
-          </div>
+          <nav v-show="dropdown" class="absolute top-2 w-32 py-2 mt-10 -ml-20 bg-white rounded-md shadow-xl dark:bg-gray-800">
+            <a v-for="item in dropdown_items" @click="$router.push(item.router)" class="block flex flex-row px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform hover:bg-blue-500 hover:text-white">
+              <span class="text-left text-xl" v-html="item.icon" />
+              <span class="mx-2" v-html="item.label" />
+            </a>
+            <a class="block flex flex-row px-4 py-2 text-sm text-white bg-red-700 capitalize transition-colors duration-200 transform hover:bg-red-500 hover:text-white">
+              <span class="text-left text-xl">
+                <span class="iconify" data-icon="bx:bxs-exit" data-inline="false"></span>
+              </span>
+              <span class="mx-2">注销</span>
+            </a>
+          </nav>
         </div>
       </div>
     </div>
@@ -43,7 +44,19 @@ export default {
   data() {
     return {
       store: store,
-      dropdown: false
+      dropdown: false,
+      dropdown_items: [
+        {
+          label: "个人资料",
+          icon: "<span class=\"iconify\" data-icon=\"ic:sharp-account-circle\" data-inline=\"false\"></span>",
+          router: "/account"
+        },
+        {
+          label: "设置",
+          icon: "<span class=\"iconify\" data-icon=\"ant-design:setting-filled\" data-inline=\"false\"></span>",
+          router: "/settings"
+        }
+      ]
     }
   }
 }
