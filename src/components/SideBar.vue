@@ -15,6 +15,20 @@
             <span :class="{'mx-3 text-sm font-sidebar font-normals': true, 'mx-3 text-sm font-sidebar font-extrabold': $route.path === item.router}" v-html="item.label" />
           </a>
         </div>
+        <div>
+          <a
+              class="w-full font-thin absolute bottom-0 uppercase text-gray-500 dark:text-gray-200 flex items-center p-2 my-2 ml-1 transition-colors duration-200 justify-start hover:text-green-500"
+              href="https://github.com/ElaBosak233/eco.git"
+              target="_blank"
+          >
+            <span class="text-left text-xl">
+              <span class="iconify" data-icon="ic:outline-support" data-inline="false"></span>
+            </span>
+            <span class="mx-3 text-sm font-sidebar font-normals">
+              获取帮助
+            </span>
+          </a>
+        </div>
       </nav>
     </div>
   </div>
@@ -30,7 +44,7 @@ export default {
       store: store,
       items: [
         {
-          label: "控制台",
+          label: "概览",
           icon: "<span class=\"iconify\" data-icon=\"ant-design:dashboard-twotone\" data-inline=\"false\"></span>",
           router: "/dashboard"
         },
@@ -45,7 +59,9 @@ export default {
           router: "/plugins"
         },
         {
-          label: "全局设置"
+          label: "全局设置",
+          icon: "<span class=\"iconify\" data-icon=\"clarity:network-settings-solid\" data-inline=\"false\"></span>",
+          router: "/settings"
         }
       ]
     }

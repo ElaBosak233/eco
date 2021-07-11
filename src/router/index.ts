@@ -25,7 +25,7 @@ const router = createRouter({
             name: 'DashBoard',
             component: () => import('@/views/DashBoard.vue'),
             meta: {
-                title: '控制台'
+                title: '概览'
             }
         },
         {
@@ -42,6 +42,14 @@ const router = createRouter({
             component: () => import('@/views/Plugins.vue'),
             meta: {
                 title: '插件市场'
+            }
+        },
+        {
+            path: '/settings',
+            name: 'Settings',
+            component: () => import('@/views/Settings.vue'),
+            meta: {
+                title: '全局设置'
             }
         }
     ]

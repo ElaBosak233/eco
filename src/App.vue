@@ -26,9 +26,6 @@ export default defineComponent({
     $route(to, from) {
       document.title = to.meta.title || 'eco'
     }
-  },
-  created: () => {
-    console.log(store.state.sidebar);
   }
 })
 </script>

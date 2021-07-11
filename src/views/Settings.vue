@@ -1,11 +1,11 @@
 <template>
-  <!-- 插件市场 -->
-  <div>这里什么都没有</div>
+  <!-- 全局设置 -->
+  <div>等会儿再来</div>
 </template>
 
 <script>
 export default {
-  name: "Plugins"
+  name: "Settings"
 }
 </script>
 
