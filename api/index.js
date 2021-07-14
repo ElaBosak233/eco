@@ -15,5 +15,5 @@ router.get('/', function (req, res) {
 app.use('/', router);
 
 app.listen(PORT, () => {
-    console.log(`⚡ [server]: Server is running at http://127.0.0.1:${PORT}`);
+    console.log(`⚡ EcoExpress is running at http://localhost:${PORT}`);
 });

@@ -65,13 +65,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "SeverCard",
   props: {
-    icon:String,
-    name:String,
-    description:String
+    icon: String,
+    name: String,
+    description: String
   }
 };
 </script>

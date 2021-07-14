@@ -12,7 +12,7 @@
       <div class="w-full h-100">
 
 
-        <h1 class="text-2xl md:text-2xl font-bold leading-tight mt-12 inline-block"><img src="favicon.svg" alt="" width=50></h1>
+        <h1 class="text-2xl md:text-2xl font-bold leading-tight mt-12 inline-block"><img src="@/assets/favicon.svg" alt="" width=50></h1>
         <h1 class="text-3xl md:text-3xl font-bold leading-tight mt-12 inline-block mx-1">登录</h1>
 
         <form class="mt-6" action="#" method="POST">

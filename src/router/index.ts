@@ -51,6 +51,14 @@ const router = createRouter({
             meta: {
                 title: '全局设置'
             }
+        },
+        {
+            path: '/account',
+            name: 'Account',
+            component: () => import('@/views/Account.vue'),
+            meta: {
+                title: '个人档案'
+            }
         }
     ]
 })
