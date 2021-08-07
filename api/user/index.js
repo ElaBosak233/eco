@@ -1,4 +1,4 @@
-const user = require('express').Router();
+const user = require("express").Router();
 
 user.get("/", function(req, res) {
     res.send("hello");

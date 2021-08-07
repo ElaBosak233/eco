@@ -15,19 +15,19 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.2.4",
-    "@types/node": "^16.3.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.2",
-    "@typescript-eslint/parser": "^4.28.2",
-    "@vitejs/plugin-vue": "^1.2.4",
-    "@vue/compiler-sfc": "^3.0.5",
-    "autoprefixer": "^9",
-    "eslint": "6.5.1",
-    "eslint-plugin-vue": "^7.13.0",
-    "postcss": "^7",
+    "@tailwindcss/postcss7-compat": "^2.2.7",
+    "@types/node": "^16.4.13",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "@vitejs/plugin-vue": "^1.4.0",
+    "@vue/compiler-sfc": "^3.1.5",
+    "autoprefixer": "^10",
+    "eslint": "7.32.0",
+    "eslint-plugin-vue": "^7.15.1",
+    "postcss": "^8",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "typescript": "^4.3.2",
-    "vite": "^2.4.0",
-    "vue-tsc": "^0.0.24"
+    "typescript": "^4.3.5",
+    "vite": "^2.4.4",
+    "vue-tsc": "^0.2.2"
   }
 }
