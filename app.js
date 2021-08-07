@@ -14,7 +14,8 @@ console.log(`
          https://github.com/ElaBosak233/eco.git
 `)
 
-const config = require("./eco.config.js");
+require('json5/lib/register');
+const config = require("./eco.config.json5");
 const exec = require("child_process").exec;
 
 const vite = exec("vite --port " + config.port.eco_vite, {});
