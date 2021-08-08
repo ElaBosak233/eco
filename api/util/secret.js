@@ -17,4 +17,4 @@ function encryptWithSHA256AndSalt (str, salt) {
 module.exports = {
     encryptWithSHA256,
     encryptWithSHA256AndSalt
-}
+};

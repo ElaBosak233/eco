@@ -19,12 +19,12 @@ export default defineComponent({
   },
   computed: {
     layout() {
-      return (this.$route.meta.layout || "default") + '-layout'
+      return (this.$route.meta.layout || "default") + "-layout";
     }
   },
   watch: {
     $route(to, from) {
-      document.title = to.meta.title || 'eco'
+      document.title = to.meta.title || "eco";
     }
   }
 })
@@ -39,6 +39,6 @@ export default defineComponent({
 }
 @font-face {
   font-family: PingFangSC;
-  src: url('./src/assets/PingFang-SC.otf');
+  src: url('./view/src/assets/PingFang-SC.otf');
 }
 </style>
