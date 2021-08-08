@@ -6,16 +6,15 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
-import store from "./store";
 
 export default defineComponent({
   name: "App",
   data() {
     return {
       isRouterAlive: true
-    }
+    };
   },
   computed: {
     layout() {
@@ -27,7 +26,7 @@ export default defineComponent({
       document.title = to.meta.title || "eco";
     }
   }
-})
+});
 </script>
 
 <style>

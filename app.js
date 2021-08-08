@@ -18,7 +18,7 @@ vite.stdout.on("data", function(data) {
     console.log("[·EcoVite]\n" + data);
 });
 vite.stderr.on("data", function(data) {
-    console.error("[×EcoVite]\n" + data);
+    console.error("[EcoVite]\n" + data);
 });
 
 const express = exec("node ./api/index.js", {});

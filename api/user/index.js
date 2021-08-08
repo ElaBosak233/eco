@@ -35,7 +35,8 @@ user.post("/login", function (req, res) {
         if (req.body.name === item.name) {
             if (secret.encryptWithSHA256AndSalt(req.body.passwd, item.name) === item.apiKey) {
                 res.send({
-                    code: 200
+                    code: 200,
+                    token: item.apiKey
                 });
                 console.log("数据已返回，200");
             } else {

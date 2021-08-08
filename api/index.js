@@ -8,7 +8,10 @@ const PORT = config.port.eco_express;
 const router = express.Router(); // Express router
 
 router.get("/", function (req, res) {
-    res.send("Hello World!");
+    res.send(`
+    <h1 style="font-size: 64px">It works!</h1>
+    <p>This is the api of <strong>eco</strong>, please input the correct info to get response!</p>
+    `);
 });
 
 app.use(bodyParser.json());  //body-parser 解析json格式数据

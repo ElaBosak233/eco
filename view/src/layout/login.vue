@@ -12,17 +12,16 @@
         <form class="mt-6" action="#" method="POST">
           <div>
             <label class="block text-gray-700">用户名</label>
-            <input type="username"
-ref="username" name="" placeholder="请输入用户名" class="w-full px-4 py-3 shadow rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus required>
+            <input v-model="username" type="username" name="" placeholder="请输入用户名" class="w-full px-4 py-3 shadow rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus required>
           </div>
           <div class="mt-4">
             <label class="block text-gray-700">密码</label>
-            <input type="password" name="" ref="passwd" placeholder="请输入密码" minlength="6" class="w-full shadow px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required>
+            <input v-model="passwd" type="password" name="" placeholder="请输入密码" minlength="6" class="w-full shadow px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required>
           </div>
           <div class="text-right mt-2">
             <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">忘记密码？</a>
           </div>
-          <a class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg text-center
+          <a type="submit" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg text-center
               px-4 py-3 mt-6 shadow" @click="login">登录</a>
         </form>
         <hr class="my-6 border-gray-300 w-full">
@@ -32,34 +31,51 @@ ref="username" name="" placeholder="请输入用户名" class="w-full px-4 py-3 
   </section>
 </template>
 
-<script>
+<script setup>
 import axios from "axios";
-export default {
-  name: "LoginLayout",
-  data() {
-    return {
-      img: "./src/assets/login_hero.jpg"
-    };
-  },
-  methods: {
-    login() {
-      console.log("登录");
-      axios.post("/api/user/login", JSON.stringify({
-        name: this.$refs.username.value,
-        passwd: this.$refs.passwd.value
-      }),{
-        headers: {
-          "Content-Type": "application/json"
-        }}).then(function(res){
-        if (res.data.code === 200) {
-          console.log("登录成功");
-        } else {
-          console.log("登录失败");
-        }
-      });
+import { ref } from "vue";
+import store from "../store";
+import { useRoute, useRouter } from "vue-router";
+
+const img = "./src/assets/login_hero.jpg";
+
+const username = ref();
+const passwd = ref();
+
+const route = useRoute();
+const router = useRouter();
+
+// 如果此人已经登录，那么跳转回主页
+if (store.state.token !== "") {
+  router.push("/");
+}
+
+function login() {
+  axios.post("/api/user/login", JSON.stringify({
+    name: username.value,
+    passwd: passwd.value
+  }),{
+    headers: {
+      "Content-Type": "application/json"
+    }}).then(function(res){
+    const { code, token } = res.data;
+    if (code === 200) {
+      store.commit("setToken", token);
+      localStorage.setItem("token", token);
+      const redirect = route.query.redirect.toString() || "/";
+      router.push(redirect);
+      console.log("已传送");
+    } else {
+      // const toast = this.$createToast({
+      //   time: 2000,
+      //   txt: massage || "登录失败",
+      //   type: "error"
+      // });
+      // toast.show();
+      console.log("登陆失败");
     }
-  }
-};
+  });
+}
 </script>
 
 <style scoped>
