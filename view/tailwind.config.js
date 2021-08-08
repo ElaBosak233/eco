@@ -3,7 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'sidebar': ['PingFangSC', 'Helvetica', 'Arial', 'sans-serif']
+      "sidebar": ["PingFangSC", "Helvetica", "Arial", "sans-serif"]
     }
   },
   plugins: [],

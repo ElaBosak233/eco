@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "start": "node app.js"
+    "start": "node app.js",
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "express": "^4.17.1",
