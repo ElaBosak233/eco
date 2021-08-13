@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("head", { title: "eco" }); %>
+</head>
+<body>
+<main class="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
+    <div class="flex items-start justify-between">
+        <!-- 侧边栏 start -->
+        <% let sidebar = true; %>
+        <div id="sidebar" class="<%- (sidebar) ? "h-screen lg:block shadow relative w-60" : "h-screen hidden shadow relative w-60" %>">
+            <div class="bg-white h-full dark:bg-gray-700">
+                <div
+                        class="container flex items-center justify-center pt-4 pb-4 bg-green-500"
+                        onclick="home()"
+                >
+                    <img
+                            src="../img/favicon.svg"
+                            alt=""
+                            class="max-h-10"
+                    >
+                </div>
+                <nav class="mt-3">
+                    <div>
+                        <% items.forEach(function(item) { %>
+                            <a class="<%- (router !== item.router) ? "w-full font-thin uppercase text-gray-500 dark:text-gray-200 flex items-center p-2 my-2 ml-1 transition-colors duration-200 justify-start hover:text-green-500" : "w-full font-thin uppercase text-green-500 flex items-center p-2 my-2 ml-1 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-green-100 border-r-4 border-green-500 dark:from-gray-700 dark:to-gray-800 border-r-4 border-green-500" %>"
+                            onclick="_sidebar_redirect(`<%- item.router %>`)"
+                            >
+                                <span class="text-left text-xl"><%- item.icon %></span>
+                                <span
+                                        class="<%- (router === item.router) ? "mx-3 text-sm font-sidebar font-extrabold mx-3 text-sm font-sidebar font-normals" : "mx-3 text-sm font-sidebar font-normals" %>"
+                                ><%- item.label %></span>
+                            </a>
+                        <% }); %>
+                    </div>
+                    <div>
+                        <a
+                                class="w-full font-thin absolute bottom-0 uppercase text-gray-500 dark:text-gray-200 flex items-center p-2 my-2 ml-1 transition-colors duration-200 justify-start hover:text-green-500"
+                                href="https://github.com/ElaBosak233/eco.git"
+                                target="_blank"
+                        >
+            <span class="text-left text-xl">
+              <span
+                      class="iconify"
+                      data-icon="ic:outline-support"
+                      data-inline="false"></span>
+            </span>
+                            <span class="mx-3 text-sm font-sidebar font-normals">
+              获取帮助
+            </span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- 侧边栏 end -->
+        <div class="flex flex-col w-full px-4 pt-4 pb-4 md:p-4 md:space-y-4">
+            <!-- 顶栏 start -->
+            <header class="w-full shadow bg-gradient-to-r from-green-400 to-blue-500 dark:bg-gray-700 items-center h-16 rounded-xl z-40">
+                <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
+                    <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
+                        <div class="relative mb-1 left-0 z-50 flex w-3/4 h-full">
+                            <button
+                                    type="button"
+                                    class="flex justify-center items-center mt-2 w-8 h-8 bg-green-100 hover:bg-green-200 focus:ring-green-300 focus:ring-offset-green-300 text-green-500 transition ease-in duration-200 text-center text-base font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                                    onclick="_sidebar()"
+                            >
+                    <span
+                            class="iconify"
+                            data-icon="eva:menu-outline"
+                            data-inline="false"></span>
+                            </button>
+                        </div>
+                        <div class="absolute right-1">
+                            <img
+                                    alt=""
+                                    src="https://cdn.jsdelivr.net/gh/ElaBosak233/PicRepo/Profile/avatar.png"
+                                    class="rounded-full h-10 w-10"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- 顶栏 end -->
+            <div class="overflow-auto h-screen pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
+                <%- ctx %>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+<script>
+    function _sidebar() {
+        $("#sidebar").toggle();
+    }
+    function _sidebar_redirect(router) {
+        console.log(router);
+        window.location.href = router;
+    }
+    function home() {
+        window.location.href = "/";
+    }
+</script>
+</html>

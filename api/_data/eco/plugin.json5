@@ -1,9 +1,0 @@
-[
-  {
-    "id": 1,
-    "name": "示例插件",
-    "author": "Ela",
-    "gitUrl": "https://github.com/xxx/xxx.git",
-    "main": "index.js"
-  }
-]

@@ -1,32 +1,33 @@
 {
   "name": "eco",
-  "license": "GNU General Public License v3",
-  "description": "Make your minecraft server with intelligence!",
   "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "author": "ElaBosak233",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "start": "node app.js",
-    "lint": "eslint . --fix"
+    "start": "node app.js --host=0.0.0.0",
+    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css"
   },
   "dependencies": {
+    "autoprefixer": "^10.3.1",
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "json5": "^2.2.0",
-    "vue": "^3.0.5",
-    "vue-router": "^4.0.10",
-    "vuex": "^4.0.2"
+    "log4js": "^6.3.0",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.7"
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.2.7",
-    "@types/node": "^16.4.13",
-    "@vitejs/plugin-vue": "^1.4.0",
-    "@vue/compiler-sfc": "^3.1.5",
-    "autoprefixer": "^10",
-    "axios": "^0.21.1",
-    "body-parser": "^1.19.0",
-    "eslint": "7.32.0",
-    "eslint-plugin-vue": "^7.15.1",
-    "postcss": "^8",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "vite": "^2.4.4"
+    "prettier": "^2.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElaBosak233/eco"
   }
 }

@@ -1,0 +1,28 @@
+{
+  "name": "ecoCommons",
+  "author": "ElaBoask233",
+  "main": "index.js",
+  "type": "view",
+  "menu_items": [
+    {
+      "label": "概览",
+      "icon": "<span class=\"iconify\" data-icon=\"ant-design:dashboard-twotone\" data-inline=\"false\"></span>",
+      "router": "/"
+    },
+    {
+      "label": "服务器",
+      "icon": "<span class=\"iconify\" data-icon=\"mdi:server-network\" data-inline=\"false\"></span>",
+      "router": "/server"
+    },
+    {
+      "label": "插件市场",
+      "icon": "<span class=\"iconify\" data-icon=\"zondicons:plugin\" data-inline=\"false\"></span>",
+      "router": "/plugins"
+    },
+    {
+      "label": "全局设置",
+      "icon": "<span class=\"iconify\" data-icon=\"clarity:network-settings-solid\" data-inline=\"false\"></span>",
+      "router": "/settings"
+    }
+  ]
+}
