@@ -1,7 +1,7 @@
 # 🍀 eco
 > Make your minecraft server with intelligence!
 
-<div style="text-align:center">
+<div align="center">
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ce8df47555d24076b71b0386387e1af6)](https://www.codacy.com/gh/ElaBosak233/eco/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ElaBosak233/eco&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/elabosak233/eco/badge)](https://www.codefactor.io/repository/github/elabosak233/eco)
