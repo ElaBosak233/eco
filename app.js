@@ -74,12 +74,16 @@ global.menu_items = [];
  */
 app.use("/", require("./routers/base.js"));
 app.use("/api", require("./routers/api.js"));
+
+/**
+ * 加载插件
+ */
+global.log4js.eco.info("正在获取插件...");
 fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
     const pluginDir = "./plugins/" + dir + "/";
     /*
-    预制体类插件
+    预制体插件
      */
-    global.log4js.eco.info("正在获取预制体插件...");
     if (require(pluginDir + "plugin.json")["type"] === "prefab") {
         const prefabs = require(pluginDir + "plugin.json")["prefabs"];
         for (let key in prefabs) {
@@ -87,24 +91,25 @@ fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
                 fs.mkdirSync("./views/prefabs/" + require(pluginDir + "plugin.json")["name"]);
             }
             fs.copyFileSync(pluginDir + key, "./views/prefabs/" + require(pluginDir + "plugin.json")["name"] + "/" + prefabs[key]);
+            global.log4js.eco.info("已接受预制体插件: " + require(pluginDir + "plugin.json")["name"] + " 载入");
         }
     }
     /*
     视图类插件，主程序需要暴露路由 express.Router();
      */
-    global.log4js.eco.info("正在获取视图插件...");
     if (require(pluginDir + "plugin.json")["type"] === "view") {
         app.use("/", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
         require(pluginDir + "plugin.json")["menu_items"].forEach(function (item) {
             global.menu_items.push(item);
         });
+        global.log4js.eco.info("已接受视图类插件: " + require(pluginDir + "plugin.json")["name"] + " 载入");
     }
     /*
     接口类插件，主程序需要暴露路由 express.Router();
      */
-    global.log4js.eco.info("正在获取接口插件...");
     if (require(pluginDir + "plugin.json")["type"] === "api") {
         app.use("/api", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
+        global.log4js.eco.info("已接受接口类插件: " + require(pluginDir + "plugin.json")["name"] + " 载入");
     }
 });
 
