@@ -1,7 +1,13 @@
 # 🍀 eco
 > Make your minecraft server with intelligence!
 
-![](./view/src/assets/social-preview.png)
+<div style="text-align:center">
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ce8df47555d24076b71b0386387e1af6)](https://www.codacy.com/gh/ElaBosak233/eco/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ElaBosak233/eco&amp;utm_campaign=Badge_Grade)
+[![CodeFactor](https://www.codefactor.io/repository/github/elabosak233/eco/badge)](https://www.codefactor.io/repository/github/elabosak233/eco)
+[![author](https://img.shields.io/badge/author-ElaBosak233-success)](https://e23.in)
+
+</div>
 
 ## 快速启动
 
