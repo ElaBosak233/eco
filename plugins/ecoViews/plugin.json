@@ -1,7 +1,7 @@
 {
-  "name": "ecoCommons",
+  "name": "ecoViews",
   "author": "ElaBoask233",
-  "main": "index.js",
+  "main": "main.js",
   "type": "view",
   "menu_items": [
     {

@@ -47,7 +47,7 @@ app.use(session({
     saveUninitialized: true,
     rolling: true,
     cookie: {
-        maxAge: 5000
+        maxAge: 1000 * 60 * 30 // session 过期时间，如果在这段时间内用户没有操作，那么他就会被登出
     }
 }));
 
@@ -72,15 +72,24 @@ global.menu_items = [];
 /*
 设置路由
  */
-app.use("/", require("./routers/index.js"));
-app.use("/api", require("./routers/api/index.js"));
+app.use("/", require("./routers/base.js"));
+app.use("/api", require("./routers/api.js"));
 fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
     const pluginDir = "./plugins/" + dir + "/";
+    /*
+    视图类插件，主程序需要暴露路由 express.Router();
+     */
     if (require(pluginDir + "plugin.json")["type"] === "view") {
         app.use("/", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
         require(pluginDir + "plugin.json")["menu_items"].forEach(function (item) {
             global.menu_items.push(item);
         });
+    }
+    /*
+    接口类插件，主程序需要暴露路由 express.Router();
+     */
+    if (require(pluginDir + "plugin.json")["type"] === "api") {
+        app.use("/api", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
     }
 });
 

@@ -10,7 +10,6 @@
     "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css"
   },
   "dependencies": {
-    "autoprefixer": "^10.3.1",
     "body-parser": "^1.19.0",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.5",
@@ -18,10 +17,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "json5": "^2.2.0",
-    "log4js": "^6.3.0",
-    "postcss": "^8.3.6",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.2.7"
+    "log4js": "^6.3.0"
   },
   "devDependencies": {
     "prettier": "^2.3.2"
