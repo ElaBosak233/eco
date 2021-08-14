@@ -10,7 +10,7 @@ const path = require("path");
 router.get("/", (req, res) => {
     if (req.session["username"]) {
         const file = fs.readFileSync(path.join(__dirname, "./index.ejs"), "utf8");
-        res.render("prefabs/dashboard", {
+        res.render("prefabs/ecoPrefabs/dashboard", {
             router: "/",
             ctx: ejs.render(file),
             items: global.menu_items

@@ -77,8 +77,22 @@ app.use("/api", require("./routers/api.js"));
 fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
     const pluginDir = "./plugins/" + dir + "/";
     /*
+    预制体类插件
+     */
+    global.log4js.eco.info("正在获取预制体插件...");
+    if (require(pluginDir + "plugin.json")["type"] === "prefab") {
+        const prefabs = require(pluginDir + "plugin.json")["prefabs"];
+        for (let key in prefabs) {
+            if (!fs.existsSync("./views/prefabs/" + require(pluginDir + "plugin.json")["name"])) {
+                fs.mkdirSync("./views/prefabs/" + require(pluginDir + "plugin.json")["name"]);
+            }
+            fs.copyFileSync(pluginDir + key, "./views/prefabs/" + require(pluginDir + "plugin.json")["name"] + "/" + prefabs[key]);
+        }
+    }
+    /*
     视图类插件，主程序需要暴露路由 express.Router();
      */
+    global.log4js.eco.info("正在获取视图插件...");
     if (require(pluginDir + "plugin.json")["type"] === "view") {
         app.use("/", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
         require(pluginDir + "plugin.json")["menu_items"].forEach(function (item) {
@@ -88,6 +102,7 @@ fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
     /*
     接口类插件，主程序需要暴露路由 express.Router();
      */
+    global.log4js.eco.info("正在获取接口插件...");
     if (require(pluginDir + "plugin.json")["type"] === "api") {
         app.use("/api", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
     }

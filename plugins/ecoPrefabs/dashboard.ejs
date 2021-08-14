@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("head", { title: "eco" }); %>
+    <%- include("../../head", { title: "eco" }); %>
 </head>
 <body>
 <main class="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
@@ -27,9 +27,7 @@
                             onclick="_sidebar_redirect(`<%- item.router %>`)"
                             >
                                 <span class="text-left text-xl"><%- item.icon %></span>
-                                <span
-                                        class="<%- (router === item.router) ? "mx-3 text-sm font-sidebar font-extrabold mx-3 text-sm font-sidebar font-normals" : "mx-3 text-sm font-sidebar font-normals" %>"
-                                ><%- item.label %></span>
+                                <span class="<%- (router === item.router) ? "mx-3 text-sm font-sidebar font-extrabold mx-3 text-sm font-sidebar font-normals" : "mx-3 text-sm font-sidebar font-normals" %>"><%- item.label %></span>
                             </a>
                         <% }); %>
                     </div>
@@ -65,10 +63,11 @@
                                     class="flex justify-center items-center mt-2 w-8 h-8 bg-green-100 hover:bg-green-200 focus:ring-green-300 focus:ring-offset-green-300 text-green-500 transition ease-in duration-200 text-center text-base font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
                                     onclick="_sidebar()"
                             >
-                    <span
-                            class="iconify"
-                            data-icon="eva:menu-outline"
-                            data-inline="false"></span>
+                                <span
+                                        class="iconify"
+                                        data-icon="eva:menu-outline"
+                                        data-inline="false">
+                                </span>
                             </button>
                         </div>
                         <div class="absolute right-1">
@@ -82,8 +81,10 @@
                 </div>
             </header>
             <!-- 顶栏 end -->
-            <div class="overflow-auto h-screen pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
-                <%- ctx %>
+            <div class="overflow-auto h-screen w-full pt-2 md:pt-0 md:pr-0 md:pl-0">
+                <div id="ctx" class="h-full w-full pr-2 pl-2 shadow-md bg-gray-50 rounded-t-2xl">
+                    <%- ctx %>
+                </div>
             </div>
         </div>
     </div>

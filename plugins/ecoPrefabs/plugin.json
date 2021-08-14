@@ -1,0 +1,8 @@
+{
+  "name": "ecoPrefabs",
+  "author": "ElaBoask233",
+  "type": "prefab",
+  "prefabs": {
+    "dashboard.ejs": "dashboard.ejs"
+  }
+}

@@ -2,3 +2,4 @@ yarn.lock
 .idea
 logs
 node_modules
+views/prefabs/*
