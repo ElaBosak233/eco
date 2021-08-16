@@ -107,7 +107,7 @@ fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
     if (require(pluginDir + "plugin.json")["type"] === "api") {
         const name = require(pluginDir + "plugin.json")["name"];
         app.use("/api", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
-        global.log4js["eco"].info("接口类插件: " + require(pluginDir + "plugin.json")["name"] + " 已载入 ecoFramework");
+        global.log4js["eco"].info("接口类插件: " + name + " 已载入 ecoFramework");
     }
 });
 
