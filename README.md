@@ -1,5 +1,5 @@
 # 🍀 eco
-> Make your minecraft server with intelligence!
+> 项目进行中，你可以体验到除了开服以外任何功能！😏
 
 <div align="center">
 
