@@ -6,6 +6,9 @@
 
 const express = require("express");
 const router = express.Router();
+const log4js = require("log4js");
+
+global.log4js["ecoInterface"] = log4js.getLogger("ecoInterface");
 
 router.get("/", (req, res) => {
     res.send(`
