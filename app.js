@@ -69,11 +69,6 @@ global.cwd = __dirname;
  */
 global.menu_items = [];
 
-/*
-设置路由
- */
-app.use("/api", require("./routers/api.js"));
-
 /**
  * 加载插件
  */
