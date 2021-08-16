@@ -80,30 +80,36 @@ fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
      */
     if (require(pluginDir + "plugin.json")["type"] === "prefab") {
         const prefabs = require(pluginDir + "plugin.json")["prefabs"];
+        const name = require(pluginDir + "plugin.json")["name"];
         for (let key in prefabs) {
-            if (!fs.existsSync("./views/prefabs/" + require(pluginDir + "plugin.json")["name"])) {
-                fs.mkdirSync("./views/prefabs/" + require(pluginDir + "plugin.json")["name"]);
+            if (!fs.existsSync("./views/prefabs/" + name)) {
+                fs.mkdirSync("./views/prefabs/" + name);
             }
-            fs.copyFileSync(pluginDir + key, "./views/prefabs/" + require(pluginDir + "plugin.json")["name"] + "/" + prefabs[key]);
-            global.log4js.eco.info("已接受预制体插件: " + require(pluginDir + "plugin.json")["name"] + " 载入");
+            fs.copyFileSync(pluginDir + key, "./views/prefabs/" + name + "/" + prefabs[key]);
+            global.log4js[name] = log4js.getLogger(name);
+            global.log4js[name].info("预制体插件: " + name + " 已载入 ecoFramework");
         }
     }
     /*
     视图类插件，主程序需要暴露路由 express.Router();
      */
     if (require(pluginDir + "plugin.json")["type"] === "view") {
+        const name = require(pluginDir + "plugin.json")["name"];
         app.use("/", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
         require(pluginDir + "plugin.json")["menu_items"].forEach(function (item) {
             global.menu_items.push(item);
         });
-        global.log4js.eco.info("已接受视图类插件: " + require(pluginDir + "plugin.json")["name"] + " 载入");
+        global.log4js[name] = log4js.getLogger(name);
+        global.log4js[name].info("视图类插件: " + name + " 已载入 ecoFramework");
     }
     /*
     接口类插件，主程序需要暴露路由 express.Router();
      */
     if (require(pluginDir + "plugin.json")["type"] === "api") {
+        const name = require(pluginDir + "plugin.json")["name"];
         app.use("/api", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
-        global.log4js.eco.info("已接受接口类插件: " + require(pluginDir + "plugin.json")["name"] + " 载入");
+        global.log4js[name] = log4js.getLogger(name);
+        global.log4js[name].info("接口类插件: " + require(pluginDir + "plugin.json")["name"] + " 已载入 ecoFramework");
     }
 });
 
