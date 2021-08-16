@@ -72,7 +72,6 @@ global.menu_items = [];
 /*
 设置路由
  */
-app.use("/", require("./routers/base.js"));
 app.use("/api", require("./routers/api.js"));
 
 /**
@@ -118,17 +117,17 @@ fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
  */
 const server = app.listen(config.port, () => {
     console.log(`
-                                      __               
-  ___  _________     _______  _______/ /____  ____ ___ 
- / _ \\/ ___/ __ \\   / ___/ / / / ___/ __/ _ \\/ __ \`__ \\
-/  __/ /__/ /_/ /  (__  ) /_/ (__  ) /_/  __/ / / / / /
-\\___/\\___/\\____/  /____/\\__, /____/\\__/\\___/_/ /_/ /_/ 
-                       /____/                          
-        Powered by @ElaBosak233, Made with L♥VE
-         https://github.com/ElaBosak233/eco.git
+                   ___________                                                __    
+  ____   ____  ____\\_   _____/___________    _____   ______  _  _____________|  | __
+_/ __ \\_/ ___\\/  _ \\|    __) \\_  __ \\__  \\  /     \\_/ __ \\ \\/ \\/ /  _ \\_  __ \\  |/ /
+\\  ___/\\  \\__(  <_> )     \\   |  | \\// __ \\|  Y Y  \\  ___/\\     (  <_> )  | \\/    < 
+ \\___  >\\___  >____/\\___  /   |__|  (____  /__|_|  /\\___  >\\/\\_/ \\____/|__|  |__|_ \\
+     \\/     \\/          \\/               \\/      \\/     \\/                        \\/
+                        Powered by @ElaBosak233, Made with L♥VE
+                         https://github.com/ElaBosak233/eco.git
 `);
-    global.log4js.eco.info(`eco 在端口 ${server.address().port} 上成功运行 ⚡`);
-    global.log4js.eco.info(`预览地址 http://127.0.0.1:${server.address().port}`);
+    global.log4js.eco.info(`eco 在端口 ${server.address()["port"]} 上成功运行 ⚡`);
+    global.log4js.eco.info(`预览地址 http://127.0.0.1:${server.address()["port"]}`);
 });
 
 module.exports = app;

@@ -4,6 +4,35 @@ const fs = require("fs");
 const ejs = require("ejs");
 const path = require("path");
 
+
+/*
+登录视图
+ */
+router.get("/login", (req, res) => {
+    if (req.session["username"] && req.session["token"]) {
+        res.redirect("back" || "/");
+    } else {
+        res.render("login", {
+            register: require("#config").openRegistration
+        });
+    }
+});
+
+/*
+注册视图
+ */
+if (require("#config").openRegistration) {
+    router.get("/register", (req, res) => {
+        if (req.session["username"] && req.session["token"]) {
+            res.redirect("back" || "/");
+        } else {
+            res.render("login", {
+                register: require("#config").openRegistration
+            });
+        }
+    });
+}
+
 /*
 概览
  */
