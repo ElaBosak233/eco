@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, "assets")));
 设置 Session
  */
 app.use(session({
-    secret: 'ecoFramework',
+    secret: "ecoFramework",
     resave: false,
     saveUninitialized: true,
     rolling: true,

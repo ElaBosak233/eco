@@ -5,7 +5,7 @@ function randomToken(len) {
     let str = "";
 
     for (let i=0; i < length; i++) {
-        str += chars.charAt(Math.floor(Math.random() * max))
+        str += chars.charAt(Math.floor(Math.random() * max));
     }
 
     return str;
@@ -14,4 +14,4 @@ function randomToken(len) {
 
 module.exports = {
     randomToken
-}
+};
