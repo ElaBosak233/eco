@@ -73,7 +73,7 @@ global.menu_items = [];
  * 加载插件
  */
 global.log4js.eco.info("正在获取插件...");
-fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
+fs.readdirSync(global.cwd + "/plugins").forEach((dir) => {
     const pluginDir = "./plugins/" + dir + "/";
     /*
     预制体插件
