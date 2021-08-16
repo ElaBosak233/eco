@@ -22,7 +22,7 @@
                 </div>
                 <nav class="mt-3">
                     <div>
-                        <% items.forEach(function(item) { %>
+                        <% items.forEach((item) => { %>
                             <a class="<%- (router !== item.router) ? "w-full font-thin uppercase text-gray-500 dark:text-gray-200 flex items-center p-2 my-2 ml-1 transition-colors duration-200 justify-start hover:text-green-500" : "w-full font-thin uppercase text-green-500 flex items-center p-2 my-2 ml-1 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-green-100 border-r-4 border-green-500 dark:from-gray-700 dark:to-gray-800 border-r-4 border-green-500" %>"
                             onclick="_sidebar_redirect(`<%- item.router %>`)"
                             >

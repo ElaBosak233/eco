@@ -96,7 +96,7 @@ fs.readdirSync(global.cwd + "/plugins").forEach((dir) => {
     if (require(pluginDir + "plugin.json")["type"] === "view") {
         const name = require(pluginDir + "plugin.json")["name"];
         app.use("/", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
-        require(pluginDir + "plugin.json")["menu_items"].forEach(function (item) {
+        require(pluginDir + "plugin.json")["menu_items"].forEach((item) => {
             global.menu_items.push(item);
         });
         global.log4js["eco"].info("视图类插件: " + name + " 已载入 ecoFramework");
