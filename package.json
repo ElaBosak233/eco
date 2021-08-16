@@ -22,9 +22,11 @@
     "prettier": "^2.3.2"
   },
   "imports": {
+    "#/*": "./*",
     "#data/*": "./data/*",
     "#assets/*": "./assets/*",
-    "#config": "./eco.config.js"
+    "#config": "./eco.config.js",
+    "#head": "./views/head.ejs"
   },
   "repository": {
     "type": "git",

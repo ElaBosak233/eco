@@ -34,9 +34,9 @@ global.log4js = {
 /*
 设置模板引擎 Ejs 和静态文件目录
  */
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "prefabs"));
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "assets")));
 
 /*
 设置 Session
@@ -79,16 +79,16 @@ fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
     预制体插件
      */
     if (require(pluginDir + "plugin.json")["type"] === "prefab") {
-        const prefabs = require(pluginDir + "plugin.json")["prefabs"];
         const name = require(pluginDir + "plugin.json")["name"];
-        for (let key in prefabs) {
-            if (!fs.existsSync("./views/prefabs/" + name)) {
-                fs.mkdirSync("./views/prefabs/" + name);
-            }
-            fs.copyFileSync(pluginDir + key, "./views/prefabs/" + name + "/" + prefabs[key]);
-            global.log4js[name] = log4js.getLogger(name);
-            global.log4js[name].info("预制体插件: " + name + " 已载入 ecoFramework");
+        if (!fs.existsSync("./prefabs/" + name)) {
+            fs.mkdirSync("./prefabs/" + name);
         }
+        fs.readdirSync(pluginDir).forEach((item) => {
+            if (item.match(".ejs")) {
+                fs.copyFileSync(pluginDir + item, "./prefabs/" + name + "/" + item);
+            }
+        });
+        global.log4js["eco"].info("预制体插件: " + name + " 已载入 ecoFramework");
     }
     /*
     视图类插件，主程序需要暴露路由 express.Router();
@@ -99,8 +99,7 @@ fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
         require(pluginDir + "plugin.json")["menu_items"].forEach(function (item) {
             global.menu_items.push(item);
         });
-        global.log4js[name] = log4js.getLogger(name);
-        global.log4js[name].info("视图类插件: " + name + " 已载入 ecoFramework");
+        global.log4js["eco"].info("视图类插件: " + name + " 已载入 ecoFramework");
     }
     /*
     接口类插件，主程序需要暴露路由 express.Router();
@@ -108,13 +107,12 @@ fs.readdirSync(global.cwd + "/plugins").forEach(function (dir) {
     if (require(pluginDir + "plugin.json")["type"] === "api") {
         const name = require(pluginDir + "plugin.json")["name"];
         app.use("/api", require(pluginDir + require(pluginDir + "plugin.json")["main"]));
-        global.log4js[name] = log4js.getLogger(name);
-        global.log4js[name].info("接口类插件: " + require(pluginDir + "plugin.json")["name"] + " 已载入 ecoFramework");
+        global.log4js["eco"].info("接口类插件: " + require(pluginDir + "plugin.json")["name"] + " 已载入 ecoFramework");
     }
 });
 
 /*
-启动 eco 服务
+启动 ecoFramework 服务
  */
 const server = app.listen(config.port, () => {
     console.log(`

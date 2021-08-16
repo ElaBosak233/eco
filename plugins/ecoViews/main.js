@@ -12,7 +12,7 @@ router.get("/login", (req, res) => {
     if (req.session["username"] && req.session["token"]) {
         res.redirect("back" || "/");
     } else {
-        res.render("login", {
+        res.render("ecoPrefabs/login", {
             register: require("#config").openRegistration
         });
     }
@@ -26,7 +26,7 @@ if (require("#config").openRegistration) {
         if (req.session["username"] && req.session["token"]) {
             res.redirect("back" || "/");
         } else {
-            res.render("login", {
+            res.render("ecoPrefabs/login", {
                 register: require("#config").openRegistration
             });
         }
@@ -39,7 +39,7 @@ if (require("#config").openRegistration) {
 router.get("/", (req, res) => {
     if (req.session["username"]) {
         const file = fs.readFileSync(path.join(__dirname, "./index.ejs"), "utf8");
-        res.render("prefabs/ecoPrefabs/dashboard", {
+        res.render("ecoPrefabs/dashboard", {
             router: "/",
             ctx: ejs.render(file),
             items: global.menu_items
