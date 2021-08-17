@@ -5,6 +5,7 @@ const session = require("express-session");
 const log4js = require("log4js");
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const sqlite3 = require("sqlite3").verbose();
 
 const app = express();
 
@@ -28,7 +29,8 @@ log4js.configure({
 });
 
 global.log4js = {
-    eco: log4js.getLogger("eco")
+    eco: log4js.getLogger("eco"),
+    sqlite: log4js.getLogger("sqlite")
 };
 
 /*
@@ -68,6 +70,18 @@ global.cwd = __dirname;
 注册菜单
  */
 global.menu_items = [];
+
+/*
+注册数据库
+ */
+global.db = new sqlite3.Database(require("#config").db.name);
+// 用户数据库
+global.db.serialize(() => {
+    const sql = `
+        CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, email TEXT, username TEXT NOT NULL UNIQUE, passwd TEXT NOT NULL, permissions BLOB);
+    `;
+    global.db.run(sql);
+});
 
 /**
  * 加载插件

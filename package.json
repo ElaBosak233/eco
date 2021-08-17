@@ -16,7 +16,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "json5": "^2.2.0",
-    "log4js": "^6.3.0"
+    "log4js": "^6.3.0",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "prettier": "^2.3.2"
@@ -25,8 +26,7 @@
     "#/*": "./*",
     "#data/*": "./data/*",
     "#assets/*": "./assets/*",
-    "#config": "./eco.config.js",
-    "#head": "./views/head.ejs"
+    "#config": "./eco.config.js"
   },
   "repository": {
     "type": "git",

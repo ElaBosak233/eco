@@ -3,3 +3,4 @@ yarn.lock
 /logs
 /node_modules
 yarn-error.log
+*.sqlite3
