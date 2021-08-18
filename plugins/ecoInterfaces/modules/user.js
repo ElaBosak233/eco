@@ -36,10 +36,7 @@ router.post("/login", (req, res) => {
           req.session["token"] =
             req.body["username"] + "_" + token.randomToken();
           global.log4js["ecoInterface"].info(
-            "登录者 " +
-              req.body["username"] +
-              " 请求已通过，Token 已生成 " +
-              req.session["token"]
+            `登录者 ${req.body["username"]} 请求已通过，Token 已生成 ${req.session["token"]}`
           );
           res.send({
             stauts: "success",

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
-    <%- include("head", { title: "eco" }); %>
+    <%- include("head"); %>
+    <title><%- title %></title>
 </head>
 <body>
 <main class="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
@@ -22,7 +23,7 @@
                 </div>
                 <nav class="mt-3">
                     <div>
-                        <% items.forEach((item) => { %>
+                        <% barItems.forEach((item) => { %>
                             <a class="<%- (router !== item.router) ? "w-full font-thin uppercase text-gray-500 dark:text-gray-200 flex items-center p-2 my-2 ml-1 transition-colors duration-200 justify-start hover:text-green-500" : "w-full font-thin uppercase text-green-500 flex items-center p-2 my-2 ml-1 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-green-100 border-r-4 border-green-500 dark:from-gray-700 dark:to-gray-800 border-r-4 border-green-500" %>"
                             onclick="_sidebar_redirect(`<%- item.router %>`)"
                             >
@@ -75,7 +76,16 @@
                                     alt=""
                                     src="https://cdn.jsdelivr.net/gh/ElaBosak233/PicRepo/Profile/avatar.png"
                                     class="rounded-full h-10 w-10"
+                                    onclick="_avatar_dropdown()"
                             >
+                            <div id="avatar_dropdown" class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800" style="display: none;">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-blue-500 hover:text-white dark:hover:text-white">
+                                    your profile
+                                </a>
+                                <a onclick="logout()" class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-red-500 hover:text-white dark:hover:text-white">
+                                    登出
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,15 +102,29 @@
 
 </body>
 <script>
-    function _sidebar() {
-        $("#sidebar").toggle();
-    }
-    function _sidebar_redirect(router) {
-        console.log(router);
-        window.location.href = router;
-    }
-    function home() {
-        window.location.href = "/";
-    }
+  function _sidebar() {
+    $("#sidebar").toggle();
+  }
+  function _sidebar_redirect(router) {
+    console.log(router);
+    window.location.href = router;
+  }
+  function home() {
+    window.location.href = "/";
+  }
+  function _avatar_dropdown() {
+    $("#avatar_dropdown").toggle();
+  }
+  function logout() {
+    $.ajax({
+      url: "/api/user/logout",
+      type: "GET",
+      success: function(data) {
+        if (data["stauts"]==="success") {
+          window.location.href = "/login";
+        }
+      }
+    });
+  }
 </script>
 </html>

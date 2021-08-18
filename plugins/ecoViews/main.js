@@ -34,11 +34,29 @@ if (require("#config").openRegistration) {
  */
 router.get("/", (req, res) => {
   auth.needAuth(req, res, () => {
-    const file = fs.readFileSync(path.join(__dirname, "./index.ejs"), "utf8");
     res.render("ecoPrefabs/dashboard", {
+      title: "概览",
       router: "/",
-      ctx: ejs.render(file),
-      items: global.menu_items,
+      barItems: global.barItems,
+      ctx: ejs.render(
+        fs.readFileSync(path.join(__dirname, "./views/index.ejs"), "utf8")
+      ),
+    });
+  });
+});
+
+/*
+服务器
+ */
+router.get("/server", (req, res) => {
+  auth.needAuth(req, res, () => {
+    res.render("ecoPrefabs/dashboard", {
+      title: "服务器",
+      router: "/server",
+      barItems: global.barItems,
+      ctx: ejs.render(
+        fs.readFileSync(path.join(__dirname, "./index.ejs"), "utf8")
+      ),
     });
   });
 });

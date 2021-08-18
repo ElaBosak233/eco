@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("head", { title: "登录" }); %>
+    <%- include("head"); %>
+    <title>登录</title>
 </head>
 <body>
 <div class="flex flex-col items-center h-screen md:flex-row">
@@ -61,29 +62,29 @@
 </div>
 </body>
 <script>
-    function login() {
-        $.ajax({
-            url: "/api/user/login",
-            type: "POST",
-            data: {
-                username: document.getElementById("username").value,
-                passwd: document.getElementById("passwd").value
-            },
-            dataType: "json",
-            success: function(data) {
-                if (data["stauts"] === "success") {
-                    window.location.href = "/";
-                }
-                if (data["stauts"] === "error") {
-                    $("#non-existent").hide();
-                    $("#error").show();
-                }
-                if (data["stauts"] === "non-existent") {
-                    $("#error").hide();
-                    $("#non-existent").show();
-                }
-            }
-        });
-    }
+  function login() {
+    $.ajax({
+      url: "/api/user/login",
+      type: "POST",
+      data: {
+        username: document.getElementById("username").value,
+        passwd: document.getElementById("passwd").value
+      },
+      dataType: "json",
+      success: function(data) {
+        if (data["stauts"] === "success") {
+          window.location.href = "/";
+        }
+        if (data["stauts"] === "error") {
+          $("#non-existent").hide();
+          $("#error").show();
+        }
+        if (data["stauts"] === "non-existent") {
+          $("#error").hide();
+          $("#non-existent").show();
+        }
+      }
+    });
+  }
 </script>
 </html>

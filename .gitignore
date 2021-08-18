@@ -4,3 +4,4 @@ yarn.lock
 /node_modules
 yarn-error.log
 *.sqlite3
+/build

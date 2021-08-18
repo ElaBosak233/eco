@@ -73,7 +73,7 @@ global.cwd = __dirname;
 /*
 注册菜单
  */
-global.menu_items = [];
+global.barItems = [];
 
 /*
 注册数据库
@@ -125,7 +125,7 @@ fs.readdirSync(global.cwd + "/plugins").forEach((dir) => {
       require(pluginDir + require(pluginDir + "plugin.json")["main"])
     );
     require(pluginDir + "plugin.json")["menu_items"].forEach((item) => {
-      global.menu_items.push(item);
+      global.barItems.push(item);
     });
     global.log4js["eco"].info("视图类插件: " + name + " 已载入 ecoFramework");
   }

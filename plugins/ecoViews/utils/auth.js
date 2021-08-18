@@ -12,7 +12,9 @@ function notAuth(req, res, callback) {
   if (req.session["token"]) {
     res.redirect("back" || "/");
   } else {
-    callback();
+    if (typeof callback === "function") {
+      callback();
+    }
   }
 }
 
