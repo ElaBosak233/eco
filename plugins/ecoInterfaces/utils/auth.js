@@ -7,7 +7,7 @@ function needAuth(req, res, callback) {
     res.redirect("/login");
   }
 }
-function needntAuth(req, res, callback) {
+function notAuth(req, res, callback) {
   if (req.session["token"]) {
     res.redirect("back" || "/");
   } else {
@@ -17,5 +17,5 @@ function needntAuth(req, res, callback) {
 
 module.exports = {
   needAuth,
-  needntAuth,
+  notAuth,
 };

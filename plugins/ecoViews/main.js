@@ -9,7 +9,7 @@ const auth = require("./utils/auth");
 登录视图
  */
 router.get("/login", (req, res) => {
-  auth.needntAuth(req, res, () => {
+  auth.notAuth(req, res, () => {
     res.render("ecoPrefabs/login", {
       register: require("#config").openRegistration,
     });
@@ -21,7 +21,7 @@ router.get("/login", (req, res) => {
  */
 if (require("#config").openRegistration) {
   router.get("/register", (req, res) => {
-    auth.needntAuth(req, res, () => {
+    auth.notAuth(req, res, () => {
       res.render("ecoPrefabs/login", {
         register: require("#config").openRegistration,
       });

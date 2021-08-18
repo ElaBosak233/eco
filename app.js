@@ -79,13 +79,20 @@ global.menu_items = [];
 注册数据库
  */
 global.db = new sqlite3.Database(require("#config").db.name);
-// 用户数据库
-global.db.serialize(() => {
-  const sql = `
-        CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, email TEXT, username TEXT NOT NULL UNIQUE, passwd TEXT NOT NULL, permissions BLOB);
-    `;
-  global.db.run(sql);
-});
+global.db.run(`
+    CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, email TEXT, username TEXT NOT NULL UNIQUE, passwd TEXT NOT NULL, permissions BLOB);
+`); /* 用户数据库创建 */
+global.db.get(
+  `SELECT * FROM users WHERE username=$username`,
+  { $username: "admin" },
+  (err, row) => {
+    if (row === undefined) {
+      global.db.run(
+        `INSERT INTO users (username, passwd) VALUES ('admin', 'd82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892');`
+      );
+    }
+  }
+); /* 默认用户 admin 创建 */
 
 /**
  * 加载插件

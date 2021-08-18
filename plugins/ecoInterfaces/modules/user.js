@@ -17,7 +17,7 @@ body {username, passwd}
 return {stauts}
  */
 router.post("/login", (req, res) => {
-  auth.needntAuth(req, res, () => {
+  auth.notAuth(req, res, () => {
     global.db.get(
       "SELECT * FROM users WHERE username=$username",
       { $username: req.body["username"] },
