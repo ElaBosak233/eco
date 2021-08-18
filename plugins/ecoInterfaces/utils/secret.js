@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 
-function encryptWithSHA256 (str) {
-    return crypto.createHash("sha256").update(str).digest("hex");
+function encryptWithSHA256(str) {
+  return crypto.createHash("sha256").update(str).digest("hex");
 }
 
 /**
@@ -10,11 +10,14 @@ function encryptWithSHA256 (str) {
  * @param salt 此处为用户名
  * @return code 加盐加密后的密码字符串
  */
-function encryptWithSHA256AndSalt (str, salt) {
-    return crypto.createHash("sha256").update(salt+str).digest("hex");
+function encryptWithSHA256AndSalt(str, salt) {
+  return crypto
+    .createHash("sha256")
+    .update(salt + str)
+    .digest("hex");
 }
 
 module.exports = {
-    encryptWithSHA256,
-    encryptWithSHA256AndSalt
+  encryptWithSHA256,
+  encryptWithSHA256AndSalt,
 };
