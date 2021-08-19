@@ -8,7 +8,6 @@ const express = require("express");
 const secretUtil = require("../utils/secret");
 const router = express.Router();
 const token = require("../utils/token");
-const auth = require("../utils/auth");
 
 /*
 用户登录
@@ -17,7 +16,7 @@ body {username, passwd}
 return {stauts}
  */
 router.post("/login", (req, res) => {
-  auth.notAuth(req, res, () => {
+  global.ecoInterface.auth.notAuth(req, res, () => {
     global.db.get(
       "SELECT * FROM users WHERE username=$username",
       { $username: req.body["username"] },
@@ -56,7 +55,7 @@ router.post("/login", (req, res) => {
 GET "/api/user/logout"
  */
 router.get("/logout", (req, res) => {
-  auth.needAuth(req, res, () => {
+  global.ecoInterface.auth.needAuth(req, res, () => {
     req.session["token"] = null;
     res.send({
       stauts: "success",
