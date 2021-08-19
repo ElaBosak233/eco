@@ -6,6 +6,7 @@ const log4js = require("log4js");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const sqlite3 = require("sqlite3").verbose();
+require("module-alias/register");
 
 const app = express();
 

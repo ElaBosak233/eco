@@ -17,15 +17,15 @@
     "express-session": "^1.17.2",
     "json5": "^2.2.0",
     "log4js": "^6.3.0",
+    "module-alias": "^2.2.2",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "prettier": "^2.3.2"
   },
-  "imports": {
-    "#/*": "./*",
-    "#data/*": "./data/*",
-    "#assets/*": "./assets/*",
+  "_moduleAliases": {
+    "#": ".",
+    "#assets": "./assets",
     "#config": "./eco.config.js"
   },
   "repository": {
